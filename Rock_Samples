@@ -1,0 +1,43 @@
+// C++ program of the 
+// above approach 
+#include<bits/stdc++.h>
+using namespace std;
+
+void findRockSample(vector<vector<int>>ranges,
+			int n, int r, vector<int>arr) 
+{ 
+	vector<int>a;
+	
+	// Iterate over the ranges 
+	for(int i = 0; i < r; i++)
+	{ 
+	int c = 0;
+	int l = ranges[i][0];
+	int h = ranges[i][1];
+		
+	for(int j = 0; j < arr.size(); j++)
+	{
+		if (l <= arr[j] && arr[j] <= h) 
+			c += 1;
+		}
+		a.push_back(c);
+	}
+	for(auto i:a)
+		cout << i << " ";
+}
+
+// Driver Code
+int main() 
+{ 
+	int n = 5;
+	int r = 2;
+	
+	vector<int>arr = { 400, 567, 890, 765, 987 };
+	vector<vector<int>>ranges = { { 300, 380 }, 
+								{ 800, 1000 } };
+	
+	// Function call
+	findRockSample(ranges, n, r, arr);
+} 
+
+// This code is contributed by Stream_Cipher
