@@ -1,0 +1,18 @@
+#include<iostream>
+using namespace std;
+
+int main(){
+cout<<"Entr words"<<endl;
+string shortest,longest,word;
+cin>>word;
+shortest=longest=word;
+while(cin>>word){
+if(word.size()>longest.size())
+longest = word;
+else if(word.size()<shortest.size())
+shortest = word;
+}
+cout<<"The longest word entered was"<<longest<<"with a length of"<<longest.size()<<endl;
+cout<<"The shortest word entered was"<<shortest<<"with a length of"<<shortest.size()<<endl;
+return 0;
+}
