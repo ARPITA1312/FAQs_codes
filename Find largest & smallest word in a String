@@ -2,7 +2,7 @@
 using namespace std;
 
 int main(){
-cout<<"Entr words"<<endl;
+cout<<"Enter words"<<endl;
 string shortest,longest,word;
 cin>>word;
 shortest=longest=word;
