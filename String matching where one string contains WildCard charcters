@@ -1,0 +1,11 @@
+bool match(char *f, char *s){
+if(*f == '\0' && s == '\0')
+return true;
+if(*f=='*' && (f+1) !='\0' && *s =='\0')
+return false;
+if(*f == '?' || f==*s)
+return match(f+1,s+1);
+if(*f=='*)
+return match(f+1,s)||match(f,s+1);
+return false;
+}
