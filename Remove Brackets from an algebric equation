@@ -1,0 +1,21 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+   string str, new_str;
+   int i = 0, j = 0;
+   cout << "Enter the string:\n";
+   getline(cin, str);
+   
+   while (str[i] != '\0') {
+       if (str[i] != '(' && str[i] != ')') {
+           new_str += str[i];
+           j++;
+       }
+       i++;
+   }
+   
+   cout << "The string after removing brackets:\n" << new_str;
+    return 0;
+}
