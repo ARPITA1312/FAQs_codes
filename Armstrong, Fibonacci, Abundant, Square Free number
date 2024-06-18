@@ -1,0 +1,122 @@
+//Armstrong Number 
+#include <iostream>
+using namespace std;
+
+int main() {
+    int num, originalNum, remainder, result = 0;
+    cout << "Enter a three-digit integer: ";
+    cin >> num;
+    originalNum = num;
+
+    while (originalNum != 0) {
+        // remainder contains the last digit
+        remainder = originalNum % 10;
+        
+        result += remainder * remainder * remainder;
+        
+        // removing last digit from the orignal number
+        originalNum /= 10;
+    }
+
+    if (result == num)
+        cout << num << " is an Armstrong number.";
+    else
+        cout << num << " is not an Armstrong number.";
+
+    return 0;
+}
+
+// Fibonacci Number
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, t1 = 0, t2 = 1, nextTerm = 0;
+
+    cout << "Enter the number of terms: ";
+    cin >> n;
+
+    cout << "Fibonacci Series: ";
+
+    for (int i = 1; i <= n; ++i) {
+        // Prints the first two terms.
+        if(i == 1) {
+            cout << t1 << ", ";
+            continue;
+        }
+        if(i == 2) {
+            cout << t2 << ", ";
+            continue;
+        }
+        nextTerm = t1 + t2;
+        t1 = t2;
+        t2 = nextTerm;
+        
+        cout << nextTerm << ", ";
+    }
+    return 0;
+}
+
+//Abundant Number
+#include <iostream>
+using namespace std;
+
+int main ()
+{
+    int n = 12, sum = 0;
+    
+    for(int i = 1; i < n; i++) { if(n % i == 0) sum = sum + i; } if(sum > n){ 
+cout << n << " is an Abundant Number\n"; 
+cout << "The Abundance is: " << (sum-n);
+ } else 
+cout << n << " is not an Abundant Number\n"; 
+} 
+
+//Square Free Number
+// C++ Program to print 
+// all prime factors
+
+# include <bits/stdc++.h>
+using namespace std;
+
+// Returns true if n is a square free
+// number, else returns false.
+bool isSquareFree(int n)
+{
+	if (n % 2 == 0)
+	n = n/2;
+
+	// If 2 again divides n, then n is 
+	// not a square free number.
+	if (n % 2 == 0)
+	return false;
+
+	// n must be odd at this point. So we can 
+	// skip one element (Note i = i +2)
+	for (int i = 3; i <= sqrt(n); i = i+2)
+	{
+		// Check if i is a prime factor
+		if (n % i == 0)
+		{
+		n = n/i;
+
+		// If i again divides, then 
+		// n is not square free
+		if (n % i == 0)
+			return false;
+		}
+	}
+
+	return true;
+}
+
+// Driver Code
+int main()
+{
+	int n = 10;
+	if (isSquareFree(n))
+	cout << "Yes";
+	else
+	cout << "No";
+	return 0;
+}
