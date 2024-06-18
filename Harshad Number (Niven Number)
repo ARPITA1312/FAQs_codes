@@ -1,0 +1,24 @@
+#include<iostream>
+using namespace std;
+
+int SumOfDigit(int n){
+int sum =0;
+while(n!=0){
+int last = n%10;
+sum += last;
+n /= 10;
+}
+return sum;
+}
+int main(){
+int number;
+cout<<"Enter the number: "<<endl;
+cin>>number;
+if(number % SumOfDigit(number) ==0){
+cout<<"It is a Harshad number"<<endl;
+}
+else{
+cout<<"It is not a Harshad number"<<endl;
+}
+return 0;
+}
