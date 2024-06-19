@@ -1,0 +1,154 @@
+// C++ program to convert binary 
+// to decimal 
+#include <iostream> 
+using namespace std; 
+
+// Function to convert binary 
+// to decimal 
+int binaryToDecimal(int n) 
+{ 
+	int num = n; 
+	int dec_value = 0; 
+
+	// Initializing base value to 
+	// 1, i.e 2^0 
+	int base = 1; 
+
+	int temp = num; 
+	while (temp) { 
+		int last_digit = temp % 10; 
+		temp = temp / 10; 
+		dec_value += last_digit * base; 
+		base = base * 2; 
+	} 
+
+	return dec_value; 
+} 
+
+// Driver code 
+int main() 
+{ 
+	int num = 10101001; 
+	cout << binaryToDecimal(num) << endl; 
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// C++ program to convert a decimal
+// number to binary number
+#include <iostream>
+using namespace std;
+
+// Function to convert decimal
+// to binary
+void decToBinary(int n)
+{
+	// Array to store binary number
+	int binaryNum[32];
+
+	// Counter for binary array
+	int i = 0;
+	while (n > 0) {
+		// Storing remainder in binary
+		// array
+		binaryNum[i] = n % 2;
+		n = n / 2;
+		i++;
+	}
+
+	// Printing binary array in reverse
+	// order
+	for (int j = i - 1; j >= 0; j--)
+		cout << binaryNum[j];
+}
+
+// Driver code
+int main()
+{
+	int n = 10;
+	decToBinary(n);
+	return 0;
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+// C++ program to convert a decimal 
+// number to octal number 
+#include <iostream> 
+using namespace std; 
+
+// Function to convert decimal 
+// to octal 
+void decToOctal(int n) 
+{ 
+	// Array to store octal number 
+	int octalNum[100]; 
+
+	// Counter for octal number array 
+	int i = 0; 
+	while (n != 0) { 
+		// Storing remainder in octal array 
+		octalNum[i] = n % 8; 
+		n = n / 8; 
+		i++; 
+	} 
+
+	// Printing octal number array in 
+	// reverse order 
+	for (int j = i - 1; j >= 0; j--) 
+		cout << octalNum[j]; 
+} 
+
+// Driver Code 
+int main() 
+{ 
+	int n = 33; 
+
+	// Function Call 
+	decToOctal(n); 
+
+	return 0; 
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// C++ program to convert octal 
+// to decimal
+#include <iostream>
+using namespace std;
+
+// Function to convert octal 
+// to decimal
+int octalToDecimal(int n)
+{
+	int num = n;
+	int dec_value = 0;
+
+	// Initializing base value to 1, 
+	// i.e 8^0
+	int base = 1;
+
+	int temp = num;
+	while (temp) 
+	{
+		// Extracting last digit
+		int last_digit = temp % 10;
+		temp = temp / 10;
+
+		// Multiplying last digit with 
+		// appropriate base value and adding 
+		// it to dec_value
+		dec_value += last_digit * base;
+
+		base = base * 8;
+	}
+
+	return dec_value;
+}
+
+// Driver code
+int main()
+{
+	int num = 67;
+
+	cout << octalToDecimal(num) << endl;
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
