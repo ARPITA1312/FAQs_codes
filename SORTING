@@ -1,0 +1,265 @@
+//SORTING
+//SELECTION SORT
+#include<iostream>
+using namespace std;
+
+int main(){
+int n;
+cin>>n;
+int arr[n];
+for(int i=0;i<n;i++){
+cin>>arr[i];
+}
+for(int i=0;i<n-1;i++){
+for(int j=i+1;j<n;j++){
+if(arr[j]<arr[i]){
+int temp = arr[j];
+arr[j]=arr[i];
+arr[i]=temp;
+}
+}
+}
+for(int i=0;i<n;i++){
+cout<<arr[i]<<" "<<endl;
+}}
+
+//BUBBLE SORT(Repeatedly swap two adjacent elements if they are in wrong order)
+//n-1 iterations before we get our sorted Array
+//ith iteration-(upto n-1)
+
+#include<iostream>
+using namespace std;
+
+int main(){
+int n;
+cin>>n;
+
+for(int i=0;i<n;i++){
+cin>>arr[i];
+}
+int counter=1;
+while(counter<n){
+for(int i=0;i<n-counter;i++){
+if(arr[i]>arr[i+1]){
+int temp = arr[i];
+arr[i]=arr[i+1];
+arr[i+1]=temp;
+}
+}
+counter++;
+}
+for(int i=0;i<n;i++){
+cout<<arr[i]<<" "<<endl;
+}
+
+//INSERTION SORT
+//Insert an lement from unsorted array to its correct position in sorted array
+#include<iostream>
+using namespace std;
+
+int main(){
+int n;
+cin>>n;
+
+for(int i=0;i<n;i++){
+cin>>arr[i];
+}
+for(int i=1;i<n;i++){
+int current = arr[i];
+int j=i-1;
+while(arr[j]>current){
+arr[j+1]=arr[j];
+j--;
+}
+arr[j+1]=current;
+}
+for(int i=0;i<n;i++){
+cout<<arr[i]<<" "<<endl;
+}
+
+//MERGE SORT ARRAY
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        int i=m-1,j=n-1,k=m+n-1;
+        while(i>=0&&j>=0)
+        {
+            if(nums1[i]>nums2[j])
+            {
+                nums1[k]=nums1[i];
+                i--;
+                k--;
+            }
+            else
+            {
+                nums1[k]=nums2[j];
+                j--;
+                k--;
+            }
+        }
+        while(i>=0)
+            nums1[k--]=nums1[i--];
+        while(j>=0)
+            nums1[k--]=nums2[j--];
+    }
+};
+
+
+//QUICK SORT
+#include <bits/stdc++.h>
+using namespace std;
+
+int partition(int arr[],int low,int high)
+{
+  //choose the pivot
+  
+  int pivot=arr[high];
+  //Index of smaller element and Indicate
+  //the right position of pivot found so far
+  int i=(low-1);
+  
+  for(int j=low;j<=high-1;j++)
+  {
+    //If current element is smaller than the pivot
+    if(arr[j]<pivot)
+    {
+      //Increment index of smaller element
+      i++;
+      swap(arr[i],arr[j]);
+    }
+  }
+  swap(arr[i+1],arr[high]);
+  return (i+1);
+}
+
+// The Quicksort function Implement
+           
+void quickSort(int arr[],int low,int high)
+{
+  // when low is less than high
+  if(low<high)
+  {
+    // pi is the partition return index of pivot
+    
+    int pi=partition(arr,low,high);
+    
+    //Recursion Call
+    //smaller element than pivot goes left and
+    //higher element goes right
+    quickSort(arr,low,pi-1);
+    quickSort(arr,pi+1,high);
+  }
+}
+             
+ 
+int main() {
+  int arr[]={10,7,8,9,1,5};
+  int n=sizeof(arr)/sizeof(arr[0]);
+  // Function call
+  quickSort(arr,0,n-1);
+  //Print the sorted array
+  cout<<"Sorted Array\n";
+  for(int i=0;i<n;i++)
+  {
+    cout<<arr[i]<<" ";
+  }
+  return 0;
+}
+
+//RADIX SORT
+// Radix Sort in C++ Programming
+
+#include <iostream>
+using namespace std;
+
+// Function to get the largest element from an array
+int getMax(int array[], int n) {
+  int max = array[0];
+  for (int i = 1; i < n; i++)
+    if (array[i] > max)
+      max = array[i];
+  return max;
+}
+
+// Using counting sort to sort the elements in the basis of significant places
+void countingSort(int array[], int size, int place) {
+  const int max = 10;
+  int output[size];
+  int count[max];
+
+  for (int i = 0; i < max; ++i)
+    count[i] = 0;
+
+  // Calculate count of elements
+  for (int i = 0; i < size; i++)
+    count[(array[i] / place) % 10]++;
+
+  // Calculate cumulative count
+  for (int i = 1; i < max; i++)
+    count[i] += count[i - 1];
+
+  // Place the elements in sorted order
+  for (int i = size - 1; i >= 0; i--) {
+    output[count[(array[i] / place) % 10] - 1] = array[i];
+    count[(array[i] / place) % 10]--;
+  }
+
+  for (int i = 0; i < size; i++)
+    array[i] = output[i];
+}
+
+// Main function to implement radix sort
+void radixsort(int array[], int size) {
+  // Get maximum element
+  int max = getMax(array, size);
+
+  // Apply counting sort to sort elements based on place value.
+  for (int place = 1; max / place > 0; place *= 10)
+    countingSort(array, size, place);
+}
+
+// Print an array
+void printArray(int array[], int size) {
+  int i;
+  for (i = 0; i < size; i++)
+    cout << array[i] << " ";
+  cout << endl;
+}
+
+// Driver code
+int main() {
+  int array[] = {121, 432, 564, 23, 1, 45, 788};
+  int n = sizeof(array) / sizeof(array[0]);
+  radixsort(array, n);
+  printArray(array, n);
+}
+
+//COUNTING SORT
+class Solution {
+public:
+    vector<int> relativeSortArray(vector<int>& arr1, vector<int>& arr2) {
+        //take ordered map for storing the frequencies 
+        map<int, int> mp;
+        //store all the values of num in arr1
+        for(int &num : arr1) {
+            mp[num]++;
+        }
+
+        int i = 0;
+        for(int &num : arr2) {
+            while(mp[num]-- > 0) {
+                arr1[i++] = num;
+            }
+        }
+        //for all the other values that are not present in arr2 but are present in arr1
+        for(auto &it : mp) {
+            int freq = it.second; //for taking all the frequencies out
+            while(freq > 0) {
+                arr1[i++] = it.first;
+                freq--;
+            }
+        }
+
+        return arr1;
+    }
+};
